@@ -5,13 +5,13 @@ sobre: Atuo em segurança da informação conectando quatro frentes: operação 
 
 # Skills
 
-- EDR / XDR | 92 | Cortex XDR e XSIAM, Palo Alto Traps: cobertura, estado dos agentes, instalação, desinstalação e integridade da proteção.
+- EDR / XDR | 100 | Cortex XDR e XSIAM, Palo Alto Traps: cobertura, estado dos agentes, instalação, desinstalação e integridade da proteção.
 - XQL & Threat Hunting | 90 | Consultas em endpoints, alerts e xdr_data; PowerShell, hashes, BIOC e regras de prevenção.
 - Dashboards & Governança | 85 | Transformo telemetria em KPIs de cobertura, versões, vulnerabilidades e tendência de implantação.
 - Automação & Desenvolvimento | 82 | Python, Flask, APIs REST, Postman, n8n e PowerShell aplicados a rotinas de segurança.
 - Resposta a Incidentes | 85 | Triagem, contenção, erradicação e recuperação seguindo playbooks.
-- SIEM & Threat Intel | 80 | Wazuh, OpenCTI, Microsoft Sentinel, OTX e VirusTotal; retenção, indexador e correlação.
-- Vulnerabilidades & Riscos | 72 | CVEs, severidade, Nessus, patch manager e remediação.
+- SIEM & Threat Intel | 95 | Wazuh, OpenCTI, Microsoft Sentinel, OTX e VirusTotal; retenção, indexador e correlação.
+- Vulnerabilidades & Riscos | 95 | CVEs, severidade, Nessus, patch manager e remediação.
 - Infra, Redes & Identidade | 75 | Active Directory, Oracle Linux, Ubuntu, proxy, certificados e Cloudflare WAF.
 
 # Arsenal
