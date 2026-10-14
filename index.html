@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-BR" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'self'; style-src 'unsafe-inline'; img-src data:; connect-src 'self'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="google" content="notranslate">
+<meta name="description" content="Portfólio de John David Morais: segurança da informação, EDR/XDR, SIEM e resposta a incidentes.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
+<meta name="referrer" content="no-referrer">
+<title>John David Morais // Portfólio de Segurança</title>
+<style>
+:root{color-scheme:dark;--bg:#050b09;--panel:#0a1511;--line:#12352a;--g:#00ff9c;--c:#38e1ff;--r:#ff4d6d;--y:#ffd166;--t:#c9f5e4;--m:#6f9c8a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--t);font:15px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+#rain{position:fixed;inset:0;z-index:0;opacity:.8}
+main,header{position:relative;z-index:1}
+.hud{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;display:flex;gap:12px;align-items:center;padding:10px 16px;background:#050b09ee;border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
+.hud b{color:var(--g)}.bar{flex:1;height:8px;background:#0d221b;border:1px solid var(--line);border-radius:4px;overflow:hidden;min-width:60px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--g),var(--c));transition:width .5s}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+section{padding:56px 0 24px}
+h1{font-size:clamp(28px,6vw,48px);margin:.2em 0;color:var(--g);text-shadow:0 0 18px #00ff9c55}
+h2{color:var(--c);font-size:20px;margin:0 0 18px}h2:before{content:"> ";color:var(--g)}
+.muted{color:var(--m)}.cursor{display:inline-block;width:9px;height:1em;background:var(--g);vertical-align:-2px;animation:b 1s steps(1) infinite}
+@keyframes b{50%{opacity:0}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+button,.btn{font:inherit;color:var(--g);background:transparent;border:1px solid var(--g);border-radius:6px;padding:8px 14px;cursor:pointer;text-decoration:none;display:inline-block}
+button:hover,.btn:hover{background:#00ff9c18;box-shadow:0 0 12px #00ff9c44}
+.danger{color:var(--r);border-color:var(--r)}.danger:hover{background:#ff4d6d18}
+.skill{cursor:pointer}.skill .lv{height:6px;background:#0d221b;border-radius:3px;margin:8px 0}.skill .lv i{display:block;height:100%;background:var(--c);border-radius:3px}
+.skill .d{display:none;color:var(--m);font-size:13px}.skill.open .d{display:block}
+.tl{border-left:2px solid var(--line);padding-left:16px}.tl .card{position:relative}.tl .card:before{content:"";position:absolute;left:-23px;top:20px;width:10px;height:10px;border-radius:50%;background:var(--g)}
+#term{background:#000;border:1px solid var(--line);border-radius:8px;padding:12px;height:260px;overflow:auto;font-size:13px}
+#term div{white-space:pre-wrap}#tin{display:flex;gap:6px;margin-top:8px}#tin input{flex:1;background:#000;color:var(--g);border:1px solid var(--line);border-radius:6px;padding:8px;font:inherit}
+.msg{font-size:16px;border-left:3px solid var(--c);padding-left:12px}
+.fb{min-height:48px;margin-top:10px}.ok{color:var(--g)}.bad{color:var(--r)}
+.badges{display:flex;flex-wrap:wrap;gap:8px}.badge{padding:6px 10px;border:1px dashed var(--line);border-radius:20px;color:var(--m);font-size:13px}.badge.on{border:1px solid var(--y);color:var(--y)}
+#toast{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:20;display:flex;flex-direction:column;gap:8px}
+.t{background:#0a1511;border:1px solid var(--g);color:var(--g);padding:10px 14px;border-radius:8px;animation:in .3s}
+@keyframes in{from{transform:translateX(30px);opacity:0}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}.chip{padding:4px 12px;color:var(--m);border-color:var(--line)}.chip.on{color:var(--g);border-color:var(--g)}
+.pj{cursor:pointer}.pj .d{display:none;margin-top:10px;font-size:13px}.pj.open .d{display:block}.pj .d p{margin:6px 0}.tag{display:inline-block;margin:8px 6px 0 0;padding:1px 8px;border:1px solid var(--line);border-radius:10px;color:var(--c);font-size:12px}
+.tab{padding:4px 12px;color:var(--m);border-color:var(--line)}.tab.on{color:var(--g);border-color:var(--g)}
+.pool{display:flex;flex-wrap:wrap;gap:8px;min-height:48px;padding:8px;border:1px dashed var(--line);border-radius:8px;margin:10px 0}
+.board{display:flex;flex-wrap:wrap;gap:12px;margin:10px 0 14px}
+.slot{flex:1 1 150px;min-height:72px;border:1px dashed var(--c);border-radius:8px;padding:8px;display:flex;flex-direction:column;gap:6px;position:relative}
+.slot .n{color:var(--c);font-size:12px;font-weight:bold}
+.slot.board1:after{content:""}
+.slot.over{background:#38e1ff1f}.slot.ok{border:1px solid var(--g)}.slot.bad{border:1px solid var(--r)}
+.node{touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;background:#0d221b;border:1px solid var(--g);color:var(--g);border-radius:6px;padding:6px 10px;font-size:13px}
+.ghost{position:fixed;z-index:50;pointer-events:none;opacity:.9;box-shadow:0 0 14px #00ff9c88}
+#intro{position:fixed;inset:0;z-index:100;background:#050b09ef;display:flex;align-items:center;justify-content:center;padding:16px;overflow:auto}
+#intro.open{animation:shut 1s ease-in forwards}
+@keyframes shut{0%{clip-path:inset(0 0 0 0);opacity:1}70%{clip-path:inset(49% 0 49% 0);opacity:1}100%{clip-path:inset(50% 0 50% 0);opacity:0}}
+.ibody{width:100%;max-width:980px;border:1px solid var(--line);border-radius:10px;background:var(--panel);box-shadow:0 0 40px #00ff9c22}
+.ibar{display:flex;gap:14px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);flex-wrap:wrap;font-size:13px}
+.ibar b{color:var(--g)}.ibar .live{margin-left:auto;color:var(--r);animation:b 1s steps(1) infinite}
+.icols{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:12px;padding:14px}
+@media(max-width:700px){.icols{grid-template-columns:1fr}}
+.ipanel{border:1px solid var(--line);border-radius:8px;padding:12px;min-height:210px;overflow:hidden}
+.ipanel h3{margin:0 0 10px;font-size:12px;color:var(--c);letter-spacing:2px}
+.irow{display:flex;gap:8px;font-size:12px;padding:3px 0;border-bottom:1px dashed var(--line);animation:in .3s;flex-wrap:wrap}
+.irow b{color:var(--g)}.irow em{color:var(--y);font-style:normal;margin-left:auto}
+.ipanel.center{text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center}
+.lock{font-size:42px}.dec{font-size:clamp(16px,3.5vw,24px);color:var(--g);letter-spacing:2px;min-height:1.4em;text-shadow:0 0 12px #00ff9c66}
+.ipg{width:100%;height:8px;border:1px solid var(--line);border-radius:4px;overflow:hidden}.ipg i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--g),var(--c))}
+#def{position:fixed;inset:0;z-index:150;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center;background:radial-gradient(circle,#2a0509f2,#0a0204fa);overflow:auto}
+#def.on{display:flex}#def:before{content:"";position:fixed;inset:8px;border:2px solid var(--r);animation:fl .6s steps(1) infinite;pointer-events:none}
+@keyframes fl{50%{border-color:transparent}}
+#def .tt{color:var(--r);font-size:clamp(20px,5vw,38px);font-weight:bold;text-shadow:0 0 16px #ff4d6d99;animation:gl .4s steps(2) infinite}
+@keyframes gl{50%{transform:translateX(2px);text-shadow:-2px 0 var(--c),2px 0 var(--r)}}
+#def .ds{max-width:640px;font-size:clamp(14px,2.4vw,18px)}
+#def .tm{font-size:64px;color:var(--y);font-weight:bold}
+#def .tb{width:min(520px,90%);height:10px;border:1px solid var(--r);border-radius:5px;overflow:hidden}#def .tb i{display:block;height:100%;width:100%;background:var(--r)}
+#def .opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;width:min(900px,100%)}
+#def .opts button{color:var(--t);border-color:var(--r);padding:12px;text-align:left}#def .opts button:hover{background:#ff4d6d22}
+#def.okf{background:radial-gradient(circle,#03271aee,#020a07fa)}#def.okf .tt{color:var(--g)}
+.dust{animation:dis 1.6s ease-in forwards;animation-delay:var(--dl)}
+@keyframes dis{to{transform:translate(var(--dx),var(--dy)) rotate(var(--r));opacity:0;filter:blur(8px)}}
+#gone{position:fixed;inset:0;z-index:300;background:#000;color:var(--r);display:none;align-items:center;justify-content:center;flex-direction:column;gap:16px;text-align:center;padding:20px}
+footer{padding:40px 0 60px;text-align:center;color:var(--m);font-size:12px}
+</style>
+</head>
+<body>
+<canvas id="rain"></canvas>
+<header class="hud">
+  <span>LVL <b id="lvl">1</b></span>
+  <div class="bar"><i id="xpbar"></i></div>
+  <span><b id="xp">0</b> XP</span>
+  <button id="snd" title="Som" style="padding:2px 8px">🔊</button><button id="mus" title="Música" style="padding:2px 8px">🎵</button><button id="reset" title="Reiniciar progresso" style="padding:2px 8px">↺</button>
+</header>
+<main class="wrap">
+<section id="home">
+  <p class="muted">root@secops:~# ./boot --profile</p>
+  <h1 id="name">John David Morais</h1>
+  <p class="msg"><span id="typed"></span><span class="cursor"></span></p>
+  <p>
+    <a class="btn" id="li" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/john-david-morais-10957092">Abrir LinkedIn</a>
+    <a class="btn" href="#portfolio">Ver portfólio ↓</a> <a class="btn" href="#missions">Iniciar missões ↓</a>
+  </p>
+  <p class="muted">Explore a página, resolva desafios e ganhe XP. Há uma flag escondida. 🕵️</p>
+</section>
+
+<section id="about" data-xp="10">
+  <h2>whoami</h2>
+  <div class="card" id="aboutTxt"></div>
+</section>
+
+<section id="skills" data-xp="10">
+  <h2>skill_tree <span class="muted" style="font-size:13px">(clique para escanear +5 XP)</span></h2>
+  <div class="grid" id="skillGrid"></div>
+</section>
+
+<section id="tools" data-xp="10">
+  <h2>arsenal</h2>
+  <div class="grid" id="toolGrid"></div>
+</section>
+
+<section id="exp" data-xp="10">
+  <h2>mission_log</h2>
+  <div class="tl" id="expList"></div>
+</section>
+
+<section id="edu" data-xp="10">
+  <h2>loadout <span class="muted" style="font-size:13px">(formação, certificações e idiomas)</span></h2>
+  <div class="grid" id="eduGrid"></div>
+</section>
+
+<section id="portfolio" data-xp="10">
+  <h2>portfolio <span class="muted" style="font-size:13px">(abra cada case +10 XP)</span></h2>
+  <div class="chips" id="chips"></div>
+  <div class="grid" id="pjGrid"></div>
+</section>
+
+<section id="missions" data-xp="10">
+  <h2>mission_01: phishing_hunter</h2>
+  <div class="card">
+    <div class="muted" id="qcount"></div>
+    <p id="qtext" class="msg"></p>
+    <button id="bp" class="danger">🎣 Phishing</button> <button id="bl">✅ Legítima</button>
+    <div class="fb" id="qfb"></div>
+  </div>
+</section>
+
+<section id="terminal" data-xp="10">
+  <h2>mission_02: terminal</h2>
+  <div id="term" role="log"></div>
+  <div id="tin"><span class="muted">$</span><input id="cmd" autocomplete="off" spellcheck="false" placeholder="digite help" maxlength="100"></div>
+</section>
+
+<section id="flow" data-xp="10">
+  <h2>mission_03: playbook_builder <span class="muted" style="font-size:13px">(arraste e solte os blocos)</span></h2>
+  <div class="card">
+    <div class="chips"><button class="tab on" data-r="0">Fluxo de incidente</button><button class="tab" data-r="1">Estado dos endpoints</button></div>
+    <p class="muted" id="fgoal"></p>
+    <div id="fpool" class="pool"></div>
+    <div id="fboard" class="board"></div>
+    <button id="fcheck">Validar fluxo</button> <button id="freset">Embaralhar</button>
+    <div class="fb" id="ffb"></div>
+  </div>
+</section>
+
+<section id="defense" data-xp="10">
+  <h2>mission_04: red_alert <span class="muted" style="font-size:13px">(modo hardcore)</span></h2>
+  <div class="card">
+    <p>⚠ <b>Aviso:</b> a cada 10 segundos há uma chance de um alerta invadir a tela sozinho, em qualquer ponto da página.<br>São <b>7 ameaças ao todo</b>, uma por vez, em momentos aleatórios. Você tem <b>10 segundos</b> para escolher a ação certa em cada uma.<br><span class="bad">Errou ou estourou o tempo? A página se desintegra.</span> Zerar o desafio dá XP e a conquista Defensor.</p>
+    <button class="danger" id="defgo">⚠ Iniciar simulação</button>
+  </div>
+</section>
+
+<section id="badges" data-xp="10">
+  <h2>achievements</h2>
+  <div class="badges" id="badgeList"></div>
+</section>
+
+<section id="contact" data-xp="10">
+  <h2>contact</h2>
+  <div class="card">Pronto para conectar? Nível máximo desbloqueado quando você me chamar.<br><br>
+  <a class="btn" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/john-david-morais-10957092" id="li2">Conectar no LinkedIn</a> <button id="mailBtn">✉ Mostrar e-mail</button> <a class="btn" target="_blank" rel="noopener noreferrer" href="https://profejohndavidmorais.blogspot.com/">Blog</a></div>
+</section>
+<footer>// feito em HTML + JS puro · dica: tente o Konami code ↑↑↓↓←→←→BA</footer>
+</main>
+<div id="toast"></div>
+<div id="intro">
+  <div class="ibody">
+    <div class="ibar"><b>◉ JDM-CTI</b><span>Threat Intelligence Platform</span><span class="muted">Feeds · IOCs · Actors · Reports</span><span class="live">● LIVE</span></div>
+    <div class="icols">
+      <div class="ipanel"><h3>IOC FEED</h3><div id="ifeed"></div></div>
+      <div class="ipanel center">
+        <div class="muted" style="font-size:11px;letter-spacing:2px">CLASSIFIED PROFILE // AES-256</div>
+        <div class="lock" id="ilock">🔒</div>
+        <div class="dec" id="idec">████████████</div>
+        <div class="ipg"><i id="ipg"></i></div>
+        <div class="muted" id="istat">Estabelecendo canal seguro...</div>
+        <button id="iskip">pular ▸</button> <button id="isnd">🔊 ativar som</button>
+      </div>
+      <div class="ipanel"><h3>THREAT ACTORS</h3><div id="iact"></div></div>
+    </div>
+  </div>
+</div>
+
+<div id="def">
+  <div class="muted" id="dcnt"></div>
+  <div class="tt" id="dtt"></div>
+  <div class="ds" id="dds"></div>
+  <div class="tm" id="dtm">10.0</div>
+  <div class="tb"><i id="dtb"></i></div>
+  <div class="opts" id="dopts"></div>
+</div>
+<div id="gone">
+  <div style="font-size:clamp(22px,5vw,38px)">▓▒░ SISTEMA COMPROMETIDO ░▒▓</div>
+  <div class="muted">Você foi desintegrado. Indo para o JS Paint reconstruir a página...</div>
+  <a class="btn danger" href="https://jspaint.app/" target="_blank" rel="noopener noreferrer">Abrir jspaint.app</a>
+</div>
+<script>
+(async()=>{
+function norm(x){return String(x).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim()}
+function clip(x,n){return String(x==null?'':x).replace(/\s+/g,' ').trim().slice(0,n)}
+function parseContent(t,D){
+ const M={};let sec=null,blk=null,key=null,tgt=null,m;
+ for(const raw of t.replace(/\r/g,'').split('\n')){
+  const L=raw.trimEnd();
+  if(m=L.match(/^#\s+(.+)$/)){sec=norm(m[1]);M[sec]={kv:{},list:[],blocks:[]};blk=null;key=null;tgt=M[sec].kv;continue}
+  if(!sec)continue;
+  if(m=L.match(/^##\s+(.+)$/)){blk={n:m[1]};M[sec].blocks.push(blk);tgt=blk;key=null;continue}
+  if(m=L.match(/^[-*]\s+(.+)$/)){M[sec].list.push(m[1]);key=null;continue}
+  if(m=L.match(/^([A-Za-zÀ-ÿ_]+):\s*(.*)$/)){key=norm(m[1]);tgt[key]=m[2];continue}
+  if(L.trim()&&key)tgt[key]+=' '+L.trim()
+ }
+ const o=Object.assign({},D),cols=(l,min)=>(l||[]).map(x=>x.split('|').map(v=>v.trim())).filter(a=>a.length>=min&&a[0]);
+ if(M.perfil){if(M.perfil.kv.tagline)o.tagline=clip(M.perfil.kv.tagline,160);if(M.perfil.kv.sobre)o.about=clip(M.perfil.kv.sobre,1200)}
+ const sk=cols(M.skills&&M.skills.list,3).filter(a=>isFinite(a[1])).slice(0,40).map(a=>[clip(a[0],60),Math.max(0,Math.min(100,Math.round(+a[1]))),clip(a.slice(2).join(' | '),300)]);if(sk.length)o.skills=sk;
+ const ex=cols(M.experiencia&&M.experiencia.list,4).slice(0,40).map(a=>[clip(a[0],100),clip(a[1],80),clip(a[2],40),clip(a.slice(3).join(' | '),400)]);if(ex.length)o.exp=ex;
+ const ed=cols(M.formacao&&M.formacao.list,2).slice(0,40).map(a=>[clip(a[0],100),clip(a.slice(1).join(' | '),160)]);if(ed.length)o.edu=ed;
+ const tl=((M.arsenal&&M.arsenal.list)||[]).filter(x=>x.indexOf(':')>0).slice(0,20).map(x=>{const i=x.indexOf(':');return [clip(x.slice(0,i),60),x.slice(i+1).split(',').map(v=>clip(v,50)).filter(Boolean).slice(0,20)]}).filter(a=>a[1].length);if(tl.length)o.tools=tl;
+ const pr=((M.projetos&&M.projetos.blocks)||[]).filter(b=>b.n&&b.descricao).slice(0,60).map(b=>({n:clip(b.n,80),s:clip(b.stack,80),t:(b.tags||'').split(',').map(v=>clip(v,24)).filter(Boolean).slice(0,8),d:clip(b.descricao,600),i:clip(b.impacto,300)}));if(pr.length)o.projects=pr;
+ return o
+}
+async function loadContent(D){
+ try{const c=new AbortController(),tm=setTimeout(()=>c.abort(),4000);const r=await fetch('content.md',{cache:'no-cache',signal:c.signal});clearTimeout(tm);
+  if(!r.ok)return D;const t=await r.text();if(t.length>200000)return D;return parseContent(t,D)}catch(e){return D}
+}
+const DEFAULT = {
+  tagline: "Security Managed Services Analyst · XDR | EDR | SIEM | LGPD · Fortaleza, CE",
+  about: "Atuo em segurança da informação conectando quatro frentes: operação (agentes, cobertura e alertas), investigação técnica (telemetria, XQL e evidências), engenharia (dashboards, scripts e automações) e governança (indicadores que ajudam a priorizar). Busco aprender todos os dias até o menor detalhe, porque é nos detalhes que vemos as diferenças, e nas diferenças, a evolução. Também sou educador desde 2013, o que me ajuda a explicar segurança com clareza.",
+  skills: [
+    ["EDR / XDR",92,"Cortex XDR e XSIAM, Palo Alto Traps: cobertura, estado dos agentes, instalação, desinstalação e integridade da proteção."],
+    ["XQL & Threat Hunting",90,"Consultas em endpoints, alerts e xdr_data; PowerShell, hashes, BIOC e regras de prevenção."],
+    ["Dashboards & Governança",85,"Transformo telemetria em KPIs de cobertura, versões, vulnerabilidades e tendência de implantação."],
+    ["Automação & Desenvolvimento",82,"Python, Flask, APIs REST, Postman, n8n e PowerShell aplicados a rotinas de segurança."],
+    ["Resposta a Incidentes",85,"Triagem, contenção, erradicação e recuperação seguindo playbooks."],
+    ["SIEM & Threat Intel",80,"Wazuh, OpenCTI, Microsoft Sentinel, OTX e VirusTotal; retenção, indexador e correlação."],
+    ["Vulnerabilidades & Riscos",72,"CVEs, severidade, Nessus, patch manager e remediação."],
+    ["Infra, Redes & Identidade",75,"Active Directory, Oracle Linux, Ubuntu, proxy, certificados e Cloudflare WAF."]
+  ],
+  exp: [
+    ["Security Managed Services Analyst","Accenture","Jul 2026 – Atual","Operação de serviços gerenciados de segurança: EDR/XDR, SIEM, resposta a incidentes, threat hunting, automações e relatórios de KPIs/SLAs."],
+    ["Segurança da Informação","Alvoar Lácteos","Ago 2023 – Jul 2026","XDR, EDR, WAF, SIEM, LGPD, Patch Manager e análise de riscos."],
+    ["Suporte a Rede N2 e N1","Connect Internet Sem Limites","2022 – 2024","Suporte de rede em dois níveis de atendimento."],
+    ["Professor","Studio Games Franchising","Fev 2022 – Atual","Ensino de criação de jogos e design: Roblox Studio, Construct 3, Game Maker, Scratch, AppInventor, Figma e Adobe."],
+    ["Coordenador acadêmico e Professor de Computação Gráfica","Gracom Escola de Efeitos Visuais","2021 – 2023","Formação de profissionais em jogos e efeitos visuais."],
+    ["Coordenador de Ensino e Professor de Informática","Cedaspy Fortaleza","2017 – 2021","Supervisão acadêmica de cursos livres de informática e docência."],
+    ["Professor de Informática","CDP Online, Microlins e SOS Tecnologia","2013 – 2017","Informática profissionalizante, computação gráfica, manutenção de micros e orientação profissional."]
+  ],
+  edu: [
+    ["🎓 Tecnólogo em Segurança da Informação","UniFanor Wyden · 2022 – 2024"],
+    ["🎓 Bacharel em Sistemas de Informação","Universidade Estácio de Sá · 2014 – 2018"],
+    ["🏅 CompTIA Security+","Security Goals & Controls"],
+    ["🏅 Metodologias Ativas","Certificação"],
+    ["🛠️ Técnico em Edificações","Apoena · 2015 – 2017"],
+    ["💻 Téc. em Sistemas Computacionais","Colégio Elite · 2012 – 2014"],
+    ["💾 Operador de Sistemas","CDP Online · 2010 – 2012"],
+    ["🌐 Idiomas","Português (nativo) · Inglês (profissional pleno) · Espanhol e Japonês (limitado)"]
+  ],
+  tools: [
+    ["🛡️ Endpoint & XDR",["Cortex XDR","Cortex XSIAM","Palo Alto Traps","CrowdStrike Falcon (aprendendo)","Microsoft Defender for Endpoint"]],
+    ["📡 SIEM & Threat Intel",["Wazuh","OpenCTI","Microsoft Sentinel","OTX","VirusTotal"]],
+    ["🔎 Vulnerabilidades",["Tenable Nessus Expert","CVEs","Patch Manager"]],
+    ["⚙️ Dev & Automação",["Python","Flask","APIs REST","Postman","n8n","PowerShell","Git / GitHub"]],
+    ["🖧 Infra & Identidade",["Active Directory","Oracle Linux","Ubuntu","Windows","systemd","Apache · PHP · MariaDB · PM2"]],
+    ["🌐 Redes & AppSec",["Cloudflare WAF","Proxy","Certificados","FortiGate"]]
+  ],
+  projects: [
+    {n:"AgentX: CPU Root Cause Analysis",s:"XQL · Python · it_metrics",t:["XSIAM","Python","EDR"],d:"Investiga consumo elevado de CPU de componentes do agente de segurança: separa métricas por servidor, analisa média, pico e volume de amostras e correlaciona com o inventário.",i:"Diferencia pico pontual de problema persistente, com evidência para análise técnica."},
+    {n:"Dashboard de Saúde do Cortex",s:"Flask · XQL · e-mail",t:["Python","XSIAM","Dashboard"],d:"Indicadores de cobertura e proteção, versões antigas de agente, endpoints desprotegidos e separação entre servidores e estações, com envio por e-mail.",i:"Distingue endpoint conectado, agente instalado e endpoint realmente protegido."},
+    {n:"Dashboard de Implantação de EDR",s:"Cortex XSIAM · XQL",t:["XSIAM","EDR","Dashboard"],d:"Acompanha o rollout de um conjunto-alvo de hosts (online, offline e não instalado), com histórico e detecções por hora categorizadas automaticamente (malware, ransomware, comportamento suspeito, exploração).",i:"Classificação a partir dos dados disponíveis, sem depender de triagem manual prévia."},
+    {n:"Threat Hunting com XQL",s:"Cortex XSIAM · PowerShell",t:["Threat Hunting","XSIAM"],d:"Consultas para hashes, caminhos, hosts e categorias de alerta; estudo de apagamento de histórico do PowerShell, BIOC e regras de prevenção.",i:"Separa o que aconteceu, a evidência da hipótese e o controle que previne ou detecta."},
+    {n:"Automação de SOC",s:"XSIAM · XSOAR · n8n",t:["Automação","SIEM"],d:"Execução de consultas por API, coleta de resultados e fluxos de automação, incluindo integração do Wazuh com n8n.",i:"Menos tarefa repetitiva, verificações padronizadas e mais rastreabilidade."},
+    {n:"SIEM e Inteligência de Ameaças",s:"Wazuh · OpenCTI",t:["SIEM","Threat Hunting"],d:"Administração de Wazuh e OpenCTI: retenção, desempenho do indexador, memória e feeds como OTX, VirusTotal e Kaspersky.",i:"Plataforma estável e indicadores de comprometimento com contexto."},
+    {n:"Scorecard Executivo de EDR",s:"Flask · API Cortex XSIAM",t:["Python","XSIAM","Dashboard"],d:"Plataforma web que consolida o scorecard executivo de EDR, projetos, memos e criação de atividades para a reunião semanal de segurança.",i:"Visão única para a gestão e menos preparação manual."},
+    {n:"Sanitização do XDR",s:"HTML · JS · JSON local",t:["XSIAM","Automação","Governança"],d:"Registra e acompanha o projeto de sanitização: remoção de pacotes, desinstalação de agentes e grupos removidos.",i:"Rastreabilidade de cada etapa do projeto."},
+    {n:"POC e Homologação de Agentes",s:"HTML · JS · JSON local",t:["EDR","Dashboard"],d:"Registro por host de instalação, POC e homologação, com insights prontos para apresentar ao cliente.",i:"Evidências organizadas e apresentação mais rápida."},
+    {n:"Plataforma de Grupos de Endpoints",s:"Flask · API Cortex XSIAM",t:["Python","XSIAM","Automação"],d:"Filtra grupos por quantidade de membros e expande endpoints, IPs e grupos relacionados via API.",i:"Análise de grupos em segundos, sem navegar pela console."},
+    {n:"Reorganização por Tags",s:"Governança · Cortex XSIAM",t:["XSIAM","Governança"],d:"Taxonomia de tags (função, infraestrutura, ambiente, criticidade etc.) para aplicar Policies e Profiles em vez de depender de grupos.",i:"Política mais previsível e fácil de manter."}
+  ]
+};
+const PROFILE = await loadContent(DEFAULT);
+const QUIZ = [
+ ["URGENTE: sua conta será bloqueada em 1h! Acesse banc0-seguro.com/login e confirme seus dados.",1,"Urgência + domínio com '0' no lugar do 'o' = phishing clássico."],
+ ["Seu código de verificação é 482913. Não compartilhe com ninguém. (você acabou de tentar logar)",0,"Mensagem esperada, sem link e sem pedir ação. Legítima."],
+ ["RH: segue a Fatura_Outubro.pdf.exe para conferência.",1,"Dupla extensão .pdf.exe: executável disfarçado."],
+ ["Mensagem do 'CEO' em número novo: 'Preciso de gift cards agora, é sigiloso.'",1,"Fraude do falso executivo (BEC/vishing). Valide por outro canal."],
+ ["Convite de reunião no calendário corporativo, com link oficial teams.microsoft.com de colega conhecido.",0,"Contexto esperado e domínio oficial. Legítima."]
+];
+const $=id=>document.getElementById(id);
+const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let dead=0,LT=0;const LOG=[];function logev(m){LOG.push(new Date().toLocaleTimeString('pt-BR')+' · '+m);if(LOG.length>100)LOG.shift()}
+const h53=(str,seed=7)=>{let h1=0xdeadbeef^seed,h2=0x41c6ce57^seed;for(let i=0,c;i<str.length;i++){c=str.charCodeAt(i);h1=Math.imul(h1^c,2654435761);h2=Math.imul(h2^c,1597334677)}h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);return (4294967296*(2097151&h2)+(h1>>>0)).toString(36)};
+const sig=o=>h53('jdm|'+JSON.stringify(o));
+let S={xp:0,seen:{},sk:{},qi:0,qs:0,badges:{},flag:0};
+try{const raw=JSON.parse(localStorage.getItem('jdm_save')||'null');let s=null;if(raw&&raw.d&&typeof raw.d==='object'&&raw.h===sig(raw.d))s=raw.d;else if(raw&&raw.h){LT=1}else if(raw){localStorage.removeItem('jdm_save')}if(s){
+ const num=v=>Number.isFinite(v)&&v>=0&&v<1e6?Math.floor(v):0,obj=v=>{const o={};if(v&&typeof v==='object')Object.keys(v).forEach(k=>{if(/^[a-z0-9]{1,20}$/i.test(k)&&v[k])o[k]=1});return o};
+ S.xp=num(s.xp);['seen','sk','badges','pj','fl'].forEach(k=>S[k]=obj(s[k]));S.flag=s.flag?1:0;S.def=s.def?1:0;S.mute=!!s.mute;S.nomus=!!s.nomus}}catch(e){}
+const save=()=>{try{localStorage.setItem('jdm_save',JSON.stringify({d:S,h:sig(S)}))}catch(e){}};
+let AC=null,SND=!S.mute,MUS=!S.nomus,siren=0;
+function ac(){if(!AC){try{AC=new(window.AudioContext||window.webkitAudioContext)()}catch(e){return null}}if(AC.state==='suspended')AC.resume();return AC}
+['pointerdown','keydown'].forEach(ev=>addEventListener(ev,ac));
+function beep(f,d,ty,v,t,sl){const c=ac();if(!c||c.state!=='running'||!SND)return;const o=c.createOscillator(),g=c.createGain(),t0=c.currentTime+(t||0);o.type=ty||'square';o.frequency.setValueAtTime(f,t0);if(sl)o.frequency.linearRampToValueAtTime(sl,t0+d);g.gain.setValueAtTime(v||.05,t0);g.gain.exponentialRampToValueAtTime(.0001,t0+d);o.connect(g);g.connect(c.destination);o.start(t0);o.stop(t0+d+.02)}
+function noise(d,v){const c=ac();if(!c||c.state!=='running'||!SND)return;const n=Math.floor(c.sampleRate*d),b=c.createBuffer(1,n,c.sampleRate),a=b.getChannelData(0);for(let i=0;i<n;i++)a[i]=(Math.random()*2-1)*(1-i/n);const sr=c.createBufferSource(),g=c.createGain();g.gain.value=v;sr.buffer=b;sr.connect(g);g.connect(c.destination);sr.start()}
+const arp=(fs,d,v,gap)=>fs.forEach((f,i)=>beep(f,d,'square',v,i*gap));
+const SFX={click:()=>beep(900,.05,'square',.04),tick:()=>beep(1500,.02,'square',.025),tick2:()=>beep(1000,.07,'square',.07),
+ ok:()=>arp([523,659,784],.1,.05,.07),bad:()=>{beep(220,.25,'sawtooth',.07,0,110);beep(110,.35,'square',.06,.2,60)},
+ xp:()=>arp([988,1319],.07,.04,.06),lvl:()=>arp([523,659,784,1047,1319],.12,.05,.08),badge:()=>arp([659,784,988,1319,1568],.14,.05,.09),
+ unlock:()=>arp([392,523,659,784,1047],.12,.05,.09),alarm:()=>arp([880,620,880,620],.14,.06,.17),
+ grab:()=>beep(440,.06,'triangle',.07),drop:()=>beep(330,.1,'triangle',.08,0,200),whoosh:()=>noise(.8,.08),boom:()=>{noise(1.6,.16);beep(130,1.2,'sawtooth',.1,0,30)}};
+const CH=[[110,[440,523,659,523]],[131,[523,659,784,659]],[98,[494,587,784,587]],[87,[440,523,698,523]]];let mi=0;
+setInterval(()=>{if(!SND||!MUS||dRun||!AC||AC.state!=='running'||document.hidden)return;const b=CH[(mi>>3)&3],i=mi%8;beep(b[1][i%4],.13,'square',.016);if(i%4===0)beep(b[0],.3,'triangle',.05);if(i%2===1)noise(.03,.012);mi++},170);
+const sync=()=>{$('snd').textContent=SND?'🔊':'🔇';$('mus').style.opacity=MUS&&SND?1:.4};sync();
+$('snd').onclick=()=>{SND=!SND;S.mute=!SND;save();sync();if(SND){ac();setTimeout(SFX.ok,120)}};
+$('mus').onclick=()=>{MUS=!MUS;S.nomus=!MUS;save();sync();ac()};
+$('cmd').addEventListener('input',()=>beep(600+Math.random()*300,.025,'square',.03));
+document.addEventListener('click',e=>{if(e.target.closest('button,.btn,.skill,.pj,.tab,.chip')&&!e.target.closest('#def,#snd,#mus'))SFX.click()});
+const BADGES={curious:["🔎 Explorador","Visitou todas as seções"],hunter:["🎣 Caçador de Phish","Acertou 4+ no quiz"],hacker:["💀 Hacker","Achou a flag"],scan:["📡 Scanner","Escaneou todas as skills"],konami:["🕹️ Old School","Konami code"],cases:["📁 Revisor de Cases","Abriu todos os projetos"],arch:["🧩 Arquiteto de Playbooks","Montou os 2 fluxos"],defender:["🛡️ Defensor","Zerou o Red Alert"]};
+function toast(m){const d=document.createElement('div');d.className='t';d.textContent=m;$('toast').appendChild(d);setTimeout(()=>d.remove(),3200)}
+function render(){const l=Math.floor(S.xp/100)+1;$('lvl').textContent=l;$('xp').textContent=S.xp;$('xpbar').style.width=(S.xp%100)+'%';
+ $('badgeList').innerHTML=Object.entries(BADGES).map(([k,v])=>`<span class="badge ${S.badges[k]?'on':''}" title="${v[1]}">${S.badges[k]?v[0]:'🔒 '+v[1]}</span>`).join('')}
+function xp(n,why){const o=Math.floor(S.xp/100);S.xp+=n;render();toast('+'+n+' XP · '+why);SFX.xp();if(Math.floor(S.xp/100)>o)SFX.lvl();if(Math.floor(S.xp/100)>o)toast('⬆ LEVEL UP! Nível '+(Math.floor(S.xp/100)+1));save()}
+function badge(k){if(S.badges[k])return;S.badges[k]=1;toast('🏆 Conquista: '+BADGES[k][0]);SFX.badge();xp(25,'conquista');render();save()}
+
+$('tagline')&&0;
+const full=PROFILE.tagline;window.heroStart=()=>{let i=0;(function ty(){$('typed').textContent=full.slice(0,i++);if(i<=full.length)setTimeout(ty,28)})()};
+$('aboutTxt').textContent=PROFILE.about;
+$('skillGrid').innerHTML=PROFILE.skills.map((s,n)=>`<div class="card skill ${S.sk[n]?'open':''}" data-n="${n}"><b>${esc(s[0])}</b> <span class="muted">${esc(s[1])}%</span><div class="lv"><i style="width:${esc(s[1])}%"></i></div><div class="d">${esc(s[2])}</div></div>`).join('');
+document.querySelectorAll('.skill').forEach(el=>el.onclick=()=>{const n=el.dataset.n;el.classList.add('open');if(!S.sk[n]){S.sk[n]=1;xp(5,'skill escaneada');if(Object.keys(S.sk).length>=PROFILE.skills.length)badge('scan')}});
+$('expList').innerHTML=PROFILE.exp.map(e=>`<div class="card"><b>${esc(e[0])}</b> · ${esc(e[1])}<div class="muted">${esc(e[2])}</div><div>${esc(e[3])}</div></div>`).join('');
+
+$('toolGrid').innerHTML=PROFILE.tools.map(t=>`<div class="card"><b>${esc(t[0])}</b><div>${t[1].map(x=>`<span class="tag">${esc(x)}</span>`).join('')}</div></div>`).join('');
+$('eduGrid').innerHTML=PROFILE.edu.map(e=>`<div class="card"><b>${esc(e[0])}</b><div class="muted">${esc(e[1])}</div></div>`).join('');
+S.pj=S.pj||{};let flt='Todos';
+function pj(){const tags=['Todos',...new Set(PROFILE.projects.flatMap(p=>p.t))];
+ $('chips').innerHTML=tags.map(t=>`<button class="chip ${t===flt?'on':''}" data-t="${esc(t)}">${esc(t)}</button>`).join('');
+ $('pjGrid').innerHTML=PROFILE.projects.map((p,n)=>({p,n})).filter(o=>flt==='Todos'||o.p.t.includes(flt)).map(({p,n})=>`<div class="card pj ${S.pj[n]?'open':''}" data-n="${n}"><b>${esc(p.n)}</b><div class="muted">${esc(p.s)}</div><div>${p.t.map(x=>`<span class="tag">${esc(x)}</span>`).join('')}</div><div class="d"><p>${esc(p.d)}</p><p class="ok">Impacto: ${esc(p.i)}</p></div></div>`).join('');
+ document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{flt=b.dataset.t;pj()});
+ document.querySelectorAll('.pj').forEach(el=>el.onclick=()=>{const n=el.dataset.n;el.classList.add('open');if(!S.pj[n]){S.pj[n]=1;xp(10,'case aberto');if(Object.keys(S.pj).length>=PROFILE.projects.length)badge('cases')}})}
+pj();
+
+const secs=[...document.querySelectorAll('section[data-xp]')];
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!S.seen[e.target.id]){S.seen[e.target.id]=1;xp(10,'seção '+e.target.id);if(secs.every(s=>S.seen[s.id]))badge('curious')}}),{threshold:.4});
+secs.forEach(s=>io.observe(s));
+
+function q(){const f=$('qfb');if(S.qi>=QUIZ.length){$('qcount').textContent='Missão concluída';$('qtext').textContent='Acertos: '+S.qs+'/'+QUIZ.length;$('bp').style.display=$('bl').style.display='none';f.innerHTML='<button id="rq">Jogar de novo</button>';$('rq').onclick=()=>{S.qi=0;S.qs=0;$('bp').style.display=$('bl').style.display='';q();save()};if(S.qs>=4)badge('hunter');return}
+ $('qcount').textContent='Mensagem '+(S.qi+1)+' de '+QUIZ.length;$('qtext').textContent=QUIZ[S.qi][0];f.textContent=''}
+function ans(p){if(S.qi>=QUIZ.length||$('qfb').dataset.lock)return;const k=QUIZ[S.qi],ok=(k[1]===1)===p,f=$('qfb');
+ f.dataset.lock=1;ok?SFX.ok():SFX.bad();f.innerHTML=`<span class="${ok?'ok':'bad'}">${ok?'✔ Correto!':'✘ Errou.'}</span> ${k[2]}`;if(ok){S.qs++;xp(15,'acerto')}
+ setTimeout(()=>{delete f.dataset.lock;S.qi++;q();save()},2200)}
+$('bp').onclick=()=>ans(true);$('bl').onclick=()=>ans(false);q();
+
+const T=$('term');const out=t=>{const d=document.createElement('div');d.textContent=t;T.appendChild(d);while(T.children.length>200)T.firstChild.remove();T.scrollTop=T.scrollHeight};
+out('SecOps shell v1.0 — digite "help"');
+const CMD={
+ help:()=>'comandos: help, whoami, skills, tools, insight, mottos, defend, ls, cat <arquivo>, xp, contact, clear',
+ defend:()=>{setTimeout(startDefense,400);return 'Iniciando simulação Red Alert...'},
+ tools:()=>PROFILE.tools.map(t=>t[0]+': '+t[1].join(', ')).join('\n'),
+ insight:()=>'conectado != instalado != protegido. Valide os campos antes de montar o indicador.',
+ mottos:()=>'FILOS MAN — "Não haverá mudanças se continuarmos os mesmos."\nMIX MAN — "Seguir no planeta redondo não vivendo uma vida quadrada."\nWORK MAN — "Ou ultrapassamos o mundo, ou o mundo nos ultrapassará."\nMETA MAN — "Viver."',
+ whoami:()=>'john david morais :: '+PROFILE.tagline,
+ skills:()=>PROFILE.skills.map(s=>s[0]+' ['+s[1]+'%]').join('\n'),
+ ls:()=>'about.txt  skills.txt  flag.txt',
+ xp:()=>'XP: '+S.xp+' | Nível: '+(Math.floor(S.xp/100)+1),
+ contact:()=>'linkedin.com/in/john-david-morais-10957092\nE-mail: use o botão da seção contact.',
+ clear:()=>{T.innerHTML='';return ''},
+ sudo:()=>'john não está no arquivo sudoers. Este incidente será reportado. 🚨'
+};
+function run(l){out('$ '+l);const [c,...a]=l.trim().split(/\s+/);
+ if(c==='cat'){const f=a[0];if(f==='about.txt')return out(PROFILE.about);if(f==='skills.txt')return out(CMD.skills());
+  if(f==='flag.txt'){out('flag{d3f3nd3r_0f_th3_n3tw0rk}');if(!S.flag){S.flag=1;xp(50,'flag capturada!');logev('Flag capturada no terminal');badge('hacker')}return}
+  return out('cat: arquivo não encontrado')}
+ if(CMD[c]){const r=CMD[c]();if(r)out(r)}else if(c)out(c+': comando não encontrado')}
+$('cmd').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.value.trim()){SFX.click();run(e.target.value);e.target.value=''}});
+
+S.fl=S.fl||{};let fr=0;
+const FL=[
+ {goal:'Monte o fluxo de resposta a incidentes: arraste os blocos para os passos na ordem certa.',slots:['Passo 1','Passo 2','Passo 3','Passo 4','Passo 5'],items:[['Triagem e priorização',0],['Contenção',1],['Erradicação',2],['Recuperação',3],['Lições aprendidas',4]],tip:'Entenda e priorize primeiro; só depois contenha, erradique e recupere.'},
+ {goal:'Classifique cada endpoint no estado de proteção correto.',multi:1,slots:['Protegido','Parcial','Desconectado','Sem EDR'],items:[['Agente 9.x · CONNECTED · proteção ativa',0],['Agente instalado · proteção pausada',1],['Agente instalado · DISCONNECTED',2],['Host sem agente instalado',3],['Agente 9.x · CONNECTED · proteção desabilitada',1]],tip:'Conectado, instalado e protegido não são sinônimos.'}
+];
+function fbuild(){const r=FL[fr];$('fgoal').textContent=r.goal;$('ffb').textContent='';$('fpool').innerHTML='';$('fboard').innerHTML='';
+ r.slots.forEach((n,i)=>{const d=document.createElement('div');d.className='slot';d.dataset.i=i;d.innerHTML='<span class="n">'+n+'</span>';$('fboard').appendChild(d)});
+ r.items.map(x=>x).sort(()=>Math.random()-.5).forEach(x=>{const d=document.createElement('div');d.className='node';d.textContent=x[0];d.dataset.v=x[1];d.onpointerdown=fdrag;$('fpool').appendChild(d)})}
+function fdrag(e){e.preventDefault();SFX.grab();const n=e.currentTarget,g=n.cloneNode(true);g.className='node ghost';g.style.width=n.offsetWidth+'px';document.body.appendChild(g);n.style.opacity=.3;
+ const mv=ev=>{g.style.left=(ev.clientX-20)+'px';g.style.top=(ev.clientY-14)+'px';document.querySelectorAll('.slot').forEach(x=>x.classList.remove('over'));const t=document.elementFromPoint(ev.clientX,ev.clientY),sl=t&&t.closest('.slot');if(sl)sl.classList.add('over')};
+ const up=ev=>{removeEventListener('pointermove',mv);removeEventListener('pointerup',up);removeEventListener('pointercancel',up);g.remove();n.style.opacity=1;
+  document.querySelectorAll('.slot').forEach(x=>x.classList.remove('over','ok','bad'));
+  const t=document.elementFromPoint(ev.clientX,ev.clientY),sl=t&&t.closest('.slot'),pl=t&&t.closest('#fpool');SFX.drop();
+  if(sl){if(!FL[fr].multi){const o=sl.querySelector('.node');if(o&&o!==n)$('fpool').appendChild(o)}sl.appendChild(n)}else if(pl)$('fpool').appendChild(n)};
+ addEventListener('pointermove',mv);addEventListener('pointerup',up);addEventListener('pointercancel',up);mv(e)}
+$('fcheck').onclick=()=>{const r=FL[fr],tot=r.items.length;let ok=0;
+ document.querySelectorAll('.slot').forEach(sl=>{sl.classList.remove('ok','bad');const ns=[...sl.querySelectorAll('.node')];if(!ns.length)return;
+  sl.classList.add(ns.every(n=>+n.dataset.v===+sl.dataset.i)?'ok':'bad');ns.forEach(n=>{if(+n.dataset.v===+sl.dataset.i)ok++})});
+ const f=$('ffb');
+ if($('fpool').children.length)f.innerHTML='<span class="bad">Ainda há blocos fora do fluxo.</span>';
+ else if(ok===tot){f.innerHTML='<span class="ok">✔ Fluxo correto!</span> '+r.tip;SFX.ok();if(!S.fl[fr]){S.fl[fr]=1;xp(30,'fluxo montado');if(S.fl[0]&&S.fl[1])badge('arch');save()}}
+ else{SFX.bad();f.innerHTML='<span class="bad">'+ok+'/'+tot+' no lugar certo. Ajuste os blocos em vermelho.</span>'}};
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{fr=+b.dataset.r;document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));fbuild()});
+$('freset').onclick=fbuild;fbuild();
+
+const DEF=[
+ ['⚠ AMEAÇA DETECTADA','Ransomware criptografando arquivos no host FIN-023. Arquivos mudando de extensão agora.',[['Isolar o endpoint da rede',1],['Reiniciar o host',0],['Aguardar o fim da criptografia',0],['Apagar os logs do host',0]]],
+ ['⚠ CONEXÃO REMOTA ESTABELECIDA','RDP vindo de IP externo desconhecido em servidor crítico, fora do horário comercial.',[['Encerrar a sessão, bloquear o IP e resetar credenciais',1],['Aprovar: deve ser o suporte',0],['Reiniciar o serviço de RDP',0],['Esperar 10 minutos para observar',0]]],
+ ['⚠ PHISHING EM MASSA','40 usuários clicaram em um link malicioso recebido por e-mail.',[['Bloquear o domínio e redefinir as senhas dos afetados',1],['Pedir por e-mail para não clicarem mais',0],['Desligar o servidor de e-mail',0],['Ignorar: já passou',0]]],
+ ['⚠ POWERSHELL SUSPEITO','Clear-History seguido de download em base64 em uma estação de trabalho.',[['Isolar o host e coletar evidências',1],['Fechar como falso positivo',0],['Só atualizar o antivírus',0],['Apagar o usuário do AD',0]]],
+ ['⚠ AGENTE EDR REMOVIDO','O agente de segurança foi desinstalado de um servidor fora da janela de mudança.',[['Investigar a autoria, restaurar a proteção e isolar se preciso',1],['Presumir que foi manutenção',0],['Esperar o próximo relatório mensal',0],['Desativar o alerta',0]]],
+ ['⚠ EXFILTRAÇÃO DE DADOS','20 GB saindo de um servidor para um IP desconhecido às 3h da manhã.',[['Bloquear o tráfego de saída e preservar as evidências',1],['Esperar a transferência terminar',0],['Aumentar a banda do link',0],['Reiniciar o roteador e seguir a vida',0]]],
+ ['⚠ IoC CONHECIDO NA REDE','Hash malicioso detectado em 12 endpoints diferentes.',[['Caçar o IoC em toda a base, isolar afetados e bloquear o hash',1],['Remover o arquivo de apenas 1 host',0],['Ignorar 11 dos 12 alertas',0],['Reiniciar todos os endpoints',0]]]
+];
+let dq=0,dtmr=0,dlock=0,dRun=0;
+const ORD=DEF.map((_,i)=>i).sort(()=>Math.random()-.5),P_ALERT=0.35,T_ALERT=10000;
+setInterval(()=>{if(dRun||S.def||$('intro')||document.hidden)return;if(Math.random()<P_ALERT)startDefense()},10000);
+function startDefense(){if(dRun||dq>=DEF.length)return;dRun=1;SFX.alarm();siren=setInterval(SFX.alarm,1100);dlock=0;$('def').classList.remove('okf');$('def').classList.add('on');document.body.style.overflow='hidden';dshow()}
+function dshow(){const d=DEF[ORD[dq]];$('dcnt').textContent='AMEAÇA '+(dq+1)+' DE '+DEF.length;$('dtt').textContent=d[0];$('dds').textContent=d[1];$('dopts').innerHTML='';
+ d[2].map(x=>x).sort(()=>Math.random()-.5).forEach(o=>{const b=document.createElement('button');b.textContent=o[0];b.onclick=()=>dans(o[1]);$('dopts').appendChild(b)});
+ const t0=performance.now();let lastSc=0;cancelAnimationFrame(dtmr);
+ (function tk(n){const left=Math.max(0,T_ALERT-(n-t0));$('dtm').textContent=(left/1000).toFixed(1);const sc=Math.ceil(left/1000);if(sc!==lastSc){lastSc=sc;if(sc<=3)SFX.tick2()}$('dtb').style.width=(left/T_ALERT*100)+'%';if(left<=0)return dfail('TEMPO ESGOTADO');dtmr=requestAnimationFrame(tk)})(t0)}
+function dans(ok){if(dlock)return;cancelAnimationFrame(dtmr);clearInterval(siren);if(!ok)return dfail('AÇÃO INCORRETA');SFX.ok();logev('Ameaça contida ('+(dq+1)+'/'+DEF.length+')');
+ dlock=1;$('def').classList.add('okf');$('dtt').textContent='✔ AMEAÇA CONTIDA';
+ setTimeout(()=>{$('def').classList.remove('okf','on');document.body.style.overflow='';dlock=0;dq++;dRun=0;if(dq>=DEF.length)dwin();else toast('🛡️ Ameaça contida ('+dq+'/'+DEF.length+'). Fique alerta...')},700)}
+function dwin(){toast('🛡️ Todas as 7 ameaças neutralizadas!');logev('Red Alert concluído');if(!S.def){S.def=1;xp(70,'Red Alert zerado');badge('defender')}}
+function dfail(m){if(dlock)return;dlock=1;cancelAnimationFrame(dtmr);clearInterval(siren);SFX.bad();logev('FALHA no Red Alert: '+m);$('dtt').textContent='✘ '+m;$('dopts').innerHTML='';setTimeout(boom,700)}
+function boom(){dead=1;dRun=1;clearInterval(siren);cancelAnimationFrame(dtmr);const iv=$('intro');if(iv)iv.style.display='none';SFX.boom();$('def').classList.remove('on');document.body.style.overflow='';
+ document.querySelectorAll('.hud,main h1,main h2,main p,main .card,main .btn,main button,main .tag,main .slot,main .node,main .badge,#term,footer').forEach(e=>{const st=e.style;st.setProperty('--dx',(40+Math.random()*180)+'px');st.setProperty('--dy',(-80-Math.random()*140)+'px');st.setProperty('--r',(Math.random()*50-25)+'deg');st.setProperty('--dl',(Math.random()*1.2)+'s');e.classList.add('dust')});
+ ash();
+ setTimeout(()=>{$('gone').style.display='flex';setTimeout(()=>{try{window.top.location.href='https://jspaint.app/'}catch(e){try{window.open('https://jspaint.app/','_blank')}catch(e2){}}},1800)},3000)}
+function ash(){const c=document.createElement('canvas');c.style.cssText='position:fixed;inset:0;z-index:200;pointer-events:none';c.width=innerWidth;c.height=innerHeight;document.body.appendChild(c);const x=c.getContext('2d');
+ const A=Array.from({length:450},()=>({x:Math.random()*c.width,y:Math.random()*c.height,vx:2+Math.random()*4,vy:-1-Math.random()*2.5,s:1+Math.random()*2.5,l:70+Math.random()*100,d:Math.random()*90}));let f=0;
+ (function l(){x.clearRect(0,0,c.width,c.height);f++;A.forEach(q=>{if(f<q.d)return;q.x+=q.vx;q.y+=q.vy;q.l--;x.fillStyle='rgba(185,195,190,'+Math.max(0,q.l/170)+')';x.fillRect(q.x,q.y,q.s,q.s)});if(f<260)requestAnimationFrame(l);else c.remove()})()}
+$('defgo').onclick=startDefense;
+$('mailBtn').onclick=()=>{const m=['johndavidmorais','protonmail.com'].join('@'),a=document.createElement('a');a.className='btn';a.href='mailto:'+m;a.textContent=m;$('mailBtn').replaceWith(a)};
+
+const K=[38,38,40,40,37,39,37,39,66,65];let ki=0;
+addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;ki=e.keyCode===K[ki]?ki+1:0;if(ki===K.length){ki=0;badge('konami')}});
+
+$('reset').onclick=()=>{try{localStorage.removeItem('jdm_save')}catch(e){}location.reload()};
+
+const cv=$('rain'),cx=cv.getContext('2d'),dpr=Math.min(devicePixelRatio||1,2),mouse={x:-999,y:-999};let W,H,P=[];
+function rs(){W=innerWidth;H=innerHeight;cv.width=W*dpr;cv.height=H*dpr;cv.style.width=W+'px';cv.style.height=H+'px';cx.setTransform(dpr,0,0,dpr,0,0);
+ const n=Math.min(110,Math.floor(W*H/14000));P=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,r:Math.random()*1.4+.8}))}
+rs();addEventListener('resize',rs);
+addEventListener('pointermove',e=>{mouse.x=e.clientX;mouse.y=e.clientY});
+addEventListener('pointerdown',e=>{if(P.length<220)for(let i=0;i<5;i++)P.push({x:e.clientX,y:e.clientY,vx:(Math.random()-.5)*2.4,vy:(Math.random()-.5)*2.4,r:1.6,life:240})});
+(function loop(){cx.clearRect(0,0,W,H);
+ for(const p of P){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+  const dx=p.x-mouse.x,dy=p.y-mouse.y,d=Math.hypot(dx,dy);if(d<110&&d>0){p.x+=dx/d*1.4;p.y+=dy/d*1.4}
+  if(p.life&&--p.life<=0)p.dead=1}
+ P=P.filter(p=>!p.dead);
+ for(let i=0;i<P.length;i++){const a=P[i];
+  for(let j=i+1;j<P.length;j++){const b=P[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<130){cx.strokeStyle='rgba(0,255,156,'+(.35*(1-d/130))+')';cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(b.x,b.y);cx.stroke()}}
+  const dm=Math.hypot(a.x-mouse.x,a.y-mouse.y);if(dm<170){cx.strokeStyle='rgba(56,225,255,'+(.6*(1-dm/170))+')';cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(mouse.x,mouse.y);cx.stroke()}
+  cx.fillStyle='#00ff9c';cx.beginPath();cx.arc(a.x,a.y,a.r,0,6.283);cx.fill()}
+ requestAnimationFrame(loop)})();
+
+const GL='█▓▒░#$%&@01<>/';
+function scr(el,txt,ms){const t0=performance.now();(function f(n){const k=Math.min(1,(n-t0)/ms);el.textContent=txt.split('').map((c,i)=>c===' '||i<k*txt.length?c:GL[Math.random()*GL.length|0]).join('');if(k<1)requestAnimationFrame(f)})(t0)}
+(function(){const I=$('intro'),TG='JOHN DAVID MORAIS';document.body.style.overflow='hidden';
+ const feed=[['IP','203.0.113.42','C2'],['HASH','a3f9c1…e07b','Malware'],['DOMAIN','login-banc0.example.invalid','Phishing'],['IP','198.51.100.7','Scanner'],['URL','hxxp://pay-update.example.invalid','Phishing'],['HASH','9d2e44…b1a0','Ransomware'],['IP','203.0.113.199','Botnet']];
+ const acts=[['SILENT LYNX','Espionagem'],['CRIMSON RELAY','Ransomware'],['GHOST TIDE','Phishing-as-a-Service'],['IRON VEIL','Supply chain']];
+ $('iact').innerHTML=acts.map(a=>`<div class="irow"><b>${esc(a[0])}</b><em>${esc(a[1])}</em></div>`).join('')+'<div class="muted" style="font-size:11px;margin-top:8px">* dados fictícios para demonstração</div>';
+ let fi=0;const addf=()=>{if(dead)return;SFX.tick();const f=feed[fi++%feed.length],d=document.createElement('div');d.className='irow';d.innerHTML=`<b>${esc(f[0])}</b><span>${esc(f[1])}</span><em>${esc(f[2])}</em>`;$('ifeed').prepend(d);if($('ifeed').children.length>7)$('ifeed').lastChild.remove()};
+ addf();const fiv=setInterval(addf,380);
+ const steps=['Estabelecendo canal seguro...','Validando chave AES-256...','Descriptografando perfil...','Correlacionando IoCs...','Carregando plataforma...'];
+ const T=4200,t0=performance.now();let done=0;
+ function end(){if(done||dead)return;done=1;clearInterval(fiv);SFX.unlock();$('ilock').textContent='🔓';$('istat').innerHTML='<span class="ok">ACESSO CONCEDIDO</span>';$('idec').textContent=TG;$('ipg').style.width='100%';
+  setTimeout(()=>{I.classList.add('open');SFX.whoosh();setTimeout(()=>{I.remove();document.body.style.overflow='';window.heroStart();scr($('name'),'John David Morais',900)},1000)},500)}
+ (function tick(n){if(done||dead)return;const k=Math.min(1,(n-t0)/T);$('ipg').style.width=(k*100)+'%';$('istat').textContent=steps[Math.min(steps.length-1,k*steps.length|0)];
+  $('idec').textContent=TG.split('').map((c,i)=>c===' '||i<k*TG.length?c:GL[Math.random()*GL.length|0]).join('');
+  if(k<1)requestAnimationFrame(tick);else end()})(t0);
+ $('iskip').onclick=end;$('isnd').onclick=()=>{ac();setTimeout(SFX.ok,120)};
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches)end();
+})();
+render();
+
+function tamper(why){if(dead)return;logev('ADULTERAÇÃO: '+why);boom()}
+const T0=document.title,EM=['johndavidmorais','protonmail.com'].join('@'),OKL=['https://www.linkedin.com/in/john-david-morais-10957092','https://profejohndavidmorais.blogspot.com/','https://jspaint.app/'];
+const STAT=[...document.querySelectorAll('main h2,footer,#aboutTxt')],SNAP=STAT.map(e=>e.textContent);
+addEventListener('keydown',e=>{const k=(e.key||'').toLowerCase(),c=e.ctrlKey||e.metaKey;
+ if(e.key==='F12'||e.keyCode===123||(c&&(k==='u'||k==='s'))||(c&&e.shiftKey&&k.length===1&&'ijcke'.includes(k))||(e.metaKey&&e.altKey&&k.length===1&&'ijcu'.includes(k))){e.preventDefault();e.stopPropagation();tamper('tecla de inspeção')}},true);
+addEventListener('contextmenu',e=>{if(!(e.target.closest&&e.target.closest('input')))e.preventDefault()});
+['expList','eduGrid','toolGrid','skillGrid'].forEach(id=>new MutationObserver(()=>tamper('bloco alterado')).observe($(id),{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['style','href','src','id','data-n']}));
+const dtEl=new Image();Object.defineProperty(dtEl,'id',{get(){tamper('console aberto');return ''}});
+setInterval(()=>{if(dead)return;
+ try{const t=performance.now();debugger;if(performance.now()-t>150)return tamper('devtools aberto')}catch(e){}
+ try{console.debug(dtEl)}catch(e){}
+ if($('xp').textContent!==String(S.xp)||$('lvl').textContent!==String(Math.floor(S.xp/100)+1)||$('xpbar').style.width!==(S.xp%100)+'%')return tamper('HUD alterado');
+ if(document.querySelectorAll('.badge.on').length!==Object.keys(S.badges).filter(k=>BADGES[k]).length)return tamper('conquistas alteradas');
+ if(document.title!==T0)return tamper('título alterado');
+ for(const a of document.querySelectorAll('a[href]')){const h=a.getAttribute('href');if(h!=='mailto:'+EM&&!h.startsWith('#')&&!OKL.includes(h))return tamper('link alterado')}
+ for(let i=0;i<STAT.length;i++)if(STAT[i].textContent!==SNAP[i])return tamper('texto alterado');
+ for(const el of document.querySelectorAll('.pj')){const q=PROFILE.projects[+el.dataset.n];if(!q||!el.textContent.includes(q.n)||!el.textContent.includes(q.d)||!el.textContent.includes(q.i))return tamper('projeto alterado')}
+ try{const r=localStorage.getItem('jdm_save');if(r){const o=JSON.parse(r);if(!(o&&o.d&&o.h===sig(o.d)))return tamper('progresso salvo alterado')}}catch(e){return tamper('progresso salvo corrompido')}
+},500);
+if(LT)tamper('progresso salvo adulterado');
+})();
+</script>
+</body>
+</html>
