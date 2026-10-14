@@ -37,7 +37,7 @@ sobre: Atuo em segurança da informação conectando quatro frentes: operação 
 
 - 🎓 Tecnólogo em Segurança da Informação | UniFanor Wyden · 2022 – 2024
 - 🎓 Bacharel em Sistemas de Informação | Universidade Estácio de Sá · 2014 – 2018
-- 🏅 CompTIA Security+ | Security Goals & Controls
+- 🏅 CompTIA Security+ | Security Goals & Controls - Fundamental Security Concepts
 - 🏅 Metodologias Ativas | Certificação
 - 🛠️ Técnico em Edificações | Apoena · 2015 – 2017
 - 💻 Téc. em Sistemas Computacionais | Colégio Elite · 2012 – 2014
